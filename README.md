@@ -2,7 +2,16 @@
 
 An [agent skill](SKILL.md) for reviewing and fixing visual jumps in UI animations.
 
-Checks label and icon alignment, stationary controls, interrupted transitions, and the final handoff to the resting layout. Verification includes frames after animation cleanup.
+Use it when a label jumps at the end of a morph, an icon lands in the wrong place, or neighboring controls shift as a flyout closes. It works with your existing animation code and preserves the intended motion.
+
+## What it checks
+
+- Text and icon positions, including baselines and visible shapes.
+- Matching padding, borders, spacing, and scale between a component and its animated copy.
+- Opening, closing, and reversals, including overlapping press feedback, scroll offsets, and zoom.
+- The last animated state, the first resting state, and frames after animation cleanup.
+
+The agent checks layout and anchors before adjusting easing, blur, or spring settings.
 
 ## Install
 
@@ -13,6 +22,8 @@ npx skills add tommaso1532/animation-continuity
 Select your coding agent. Add `-g` for a global installation. Requires Node.js 22.20 or later.
 
 ## Use
+
+Tell the agent which elements should move and which should stay fixed. Provide source access for fixes and a running UI or recording to verify motion.
 
 Review only:
 
@@ -29,11 +40,5 @@ Use $animation-continuity to fix the close icon jumping when the
 flyout finishes closing. Preserve the current morph and press feedback.
 Verify the icon, label, and neighboring controls through cleanup.
 ```
-
-## Scope
-
-Fixes need source access. Verification needs a running UI, recording, or frame timeline.
-
-Used on a React Native Web prototype. Native implementations remain unverified. Visual continuity and CLS are separate checks.
 
 [MIT license](LICENSE).
