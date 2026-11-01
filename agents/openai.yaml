@@ -1,0 +1,6 @@
+interface:
+  display_name: "Animation Continuity"
+  short_description: "Keep UI animations aligned through their final frame"
+  default_prompt: "Use $animation-continuity to review this transition for visual jumps, including interruption, the handoff to the resting layout, and frames after animation cleanup."
+policy:
+  allow_implicit_invocation: true
